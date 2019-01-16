@@ -1,5 +1,5 @@
 @function image($url){
-  @return url('../images/'+$url) top center no-repeat / contain;
+  @return url('../imgs/'+$url) top center no-repeat / contain;
 }
 $spin:rgba(0, 255, 0, 0.2);
 

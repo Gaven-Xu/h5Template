@@ -161,7 +161,8 @@
     // 声明调用：主函数
     function init() {
       // 调用：创建页面方法
-      let doms = createWeeks(fakeData());
+      let data = fakeData();
+      let doms = createWeeks(data);
       document.getElementById('Weeks').innerHTML = doms;
       // 绑定点击事件
       let btns = document.querySelectorAll('.book-btn');
@@ -194,7 +195,7 @@
           });
 
         }
-      })
+      });
     }
     window.init = init;
 
@@ -208,7 +209,7 @@
     }, 1300);
 
   } catch (err) {
-    alert(err)
+    alert(err);
   }
 
 })()
