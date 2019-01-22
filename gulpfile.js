@@ -138,6 +138,6 @@ exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, connec
 
 exports.build = series(cssClean, jsClean, scss, es);
 
-exports.clean = parallel(cssClean, jsClean);
+exports.clean = parallel(cssClean, jsClean, zipClean);
 
 exports.zip = series(cssClean, jsClean, scss, es, zipClean, zipCode);

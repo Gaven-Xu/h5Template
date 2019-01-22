@@ -46,6 +46,9 @@
       borderRadius: '.32rem',
       margin: '.3rem auto 0',
       color: '#fff'
+    },
+    closeStyle: {
+      display: 'none'
     }
   }
 
