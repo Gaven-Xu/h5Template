@@ -6,8 +6,8 @@
   isInApp = true;
 
   // 项目配置.
-  let api = 'http://dev.ellabook.cn/rest/api/service';
-  let downloadLink = 'http://www.baidu.com';
+  let api = 'http://qaapi.ellabook.cn/rest/api/service';
+  let downloadLink = 'https://a.app.qq.com/o/simple.jsp?pkgname=com.ellabook';
   let modalTitle = "订阅成功", modalContent = "感谢喜欢这本书，绘本上线当天会通知您来看哦！", modalNotice = "";
   if (!isInApp) {
     modalContent = "下载咿啦看书APP查看完整绘本书单";
