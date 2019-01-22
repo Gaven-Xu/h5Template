@@ -13,6 +13,7 @@ let gulp = require('gulp'),
   babel = require('gulp-babel'),
   uglify = require('gulp-uglify'),
   obfuscator = require('gulp-javascript-obfuscator'),
+  zip = require('gulp-zip'),
   gulpif = require('gulp-if');
 
 // sass.compiler = require('node-sass');
@@ -36,8 +37,9 @@ function scss() {
     }))
     .pipe(gulpif(isDev, sm.init())) // 开发模式，生成代码sourcemaps
     .pipe(apf({
-      browsers: ['last 2 versions'],
-      cascade: false
+      browsers: ['last 2 versions', 'Android >= 4.0'],
+      cascade: true, //是否美化属性值 默认：true
+      remove: true //是否去掉不必要的前缀 默认：true 
     }))
     .pipe(sass({
       outputStyle: 'compressed'
@@ -103,8 +105,39 @@ function connectWatch(cb) {
   cb();
 }
 
-exports.clean = parallel(cssClean, jsClean);
+/**
+ * zip code
+ */
+function zipCode(cb) {
+  return gulp.src([
+    `${dirname}/**/*`,
+    `!${dirname}/node_modules/**/*`,
+    `!${dirname}/.git/**/*`,
+    `!${dirname}/assets/**/*`,
+    `!${dirname}/dist/**/*`,
+    `!${dirname}/es/**/*`,
+    `!${dirname}/scss/**/*`,
+    `!${dirname}/.babelrc`,
+    `!${dirname}/.gitignore`,
+    `!${dirname}/gulpfile.js`,
+    `!${dirname}/package.json`,
+    `!${dirname}/readme.md`,
+  ], {
+      nodir: true
+    })
+    .pipe(gulp.dest(output + '/dist'))
+    .pipe(zip('dist.zip'))
+    .pipe(gulp.dest(output));
+}
+
+function zipClean(cb) {
+  return del([dirname + '/dist/**', dirname + '/dist.zip'], cb);
+}
+
+exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, connectWatch);
 
 exports.build = series(cssClean, jsClean, scss, es);
 
-exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, connectWatch);
+exports.clean = parallel(cssClean, jsClean);
+
+exports.zip = series(cssClean, jsClean, scss, es, zipClean, zipCode);

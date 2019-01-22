@@ -8,10 +8,12 @@
   <title>宝宝寒假绘本阅读计划</title>
   <link rel="stylesheet" href="./css/style.min.css">
   <link rel="shortcut icon" href="data:image/jpeg;" type="image/x-icon">
-  <script src="https://cdn.bootcss.com/Faker/3.1.0/faker.min.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/Faker/3.1.0/faker.min.js"></script> -->
   <!-- <script src="http://192.168.1.97:8081/target/target-script-min.js#anonymous"></script> -->
   <script src="./scripts/alert.min.js"></script>
-  <script src="./scripts/data.min.js"></script>
+  <!-- <script src="./scripts/data.min.js"></script> -->
+  <script src="./lib/zepto.min.js"></script>
+  <script src="./lib/urlHandle.js"></script>
   <style>
     @font-face {
       font-family: styuanti;
@@ -102,38 +104,22 @@
   <div class="tail"></div>
   <div class="weixin"></div>
   <script>
-    if (window.orientation === 0 || window.orientation === 180) {
+    function setRem() {
       document.documentElement.style.fontSize = (document.documentElement.clientWidth * 100 / 750) + "px";
-    } else {
-      document.documentElement.style.fontSize = (document.documentElement.clientHeight * 100 / 750) + "px";
+      if (window.orientation === 0 || window.orientation === 180) {
+        document.documentElement.style.fontSize = (document.documentElement.clientWidth * 100 / 750) + "px";
+      } else {
+        document.documentElement.style.fontSize = (document.documentElement.clientHeight * 100 / 750) + "px";
+      }
     }
-    window.onorientationchange = function (e) {
-      location.reload();
+    setRem();
+    window.onload = function () {
+      setRem();
+      setInterval(setRem, 100)
+      // window.onorientationchange = function (e) {
+      //   location.reload();
+      // }
     }
-
-    // function addScript(arr, index) {
-    //   if (index > arr.length - 1) {
-    //     return false;
-    //   }
-    //   var script = document.createElement("script");
-    //   script.src = arr[index];
-
-    //   script.onload = script.onreadystatechange = function () {
-    //     if (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
-    //       console.log('加载中')
-    //       addScript(arr, index + 1);
-    //       script.onload = script.onreadystatechange = null;
-    //     }
-    //   };
-    //   document.getElementsByTagName("head")[0].appendChild(script);
-    // }
-
-    // addScript([
-    //   "https://cdn.bootcss.com/Faker/3.1.0/faker.min.js",
-    //   "./script/data.min.js",
-    //   // "./script/alert.js",
-    //   "./script/main.min.js",
-    // ], 0)
   </script>
   <script src="./scripts/main.min.js"></script>
 </body>

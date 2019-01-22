@@ -26,6 +26,7 @@
     "gulp-sass": "4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
+    "gulp-zip": "4.2.0",
     "node-sass": "4.11.0"
   },
   "keywords": [],

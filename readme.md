@@ -17,6 +17,12 @@
 ### 1.2.3. gulp clean
 仅清理css和scripts目录
 
+### gulp zip
+清理css和scripts目录
+编译scss和es
+清理zip文件
+压缩zip文件
+
 ## 1.3. 参数
 * --dev
 以开发模式进行编译，为方便调试：
