@@ -1,1 +1,9 @@
-/node_modules/
+# 包目录
+/node_modules
+
+# markdown 文档配图
+/assets
+
+# 编译代码
+/css
+/scripts
