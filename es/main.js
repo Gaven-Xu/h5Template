@@ -89,7 +89,7 @@
         // 创建 推荐图书
         top = `
             <div class="top">
-              <div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat/cover;">
+              <div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
                 <div class="hot">推荐</div>
               </div>
               <div class="book-content">
@@ -106,7 +106,7 @@
       normalBookList.forEach((book, index, bookLish) => {
         content += `
             <div class="book" ${index === 3 ? 'style="clear:both"' : ''}>
-              <div class="cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat/cover;">
+              <div class="cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
                 <div>
                   <div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}"></div>
                 </div>

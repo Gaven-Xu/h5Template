@@ -3,15 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>宝宝寒假绘本阅读计划</title>
   <link rel="stylesheet" href="./css/style.min.css">
   <link rel="shortcut icon" href="data:image/jpeg;" type="image/x-icon">
-  <!-- <script src="https://cdn.bootcss.com/Faker/3.1.0/faker.min.js"></script> -->
-  <!-- <script src="http://192.168.1.97:8081/target/target-script-min.js#anonymous"></script> -->
   <script src="./scripts/alert.min.js"></script>
-  <!-- <script src="./scripts/data.min.js"></script> -->
   <script src="./lib/zepto.min.js"></script>
   <script src="./lib/urlHandle.js"></script>
   <style>
@@ -105,19 +102,28 @@
   <div class="weixin"></div>
   <script>
     function setRem() {
-      document.documentElement.style.fontSize = (document.documentElement.clientWidth * 100 / 750) + "px";
-      if (window.orientation === 0 || window.orientation === 180) {
-        document.documentElement.style.fontSize = (document.documentElement.clientWidth * 100 / 750) + "px";
+      var dE = document.documentElement;
+      dE.style.fontSize = (dE.clientWidth * 100 / 750) + "px";
+      if (dE.clientHeight > dE.clientWidth) {
+        dE.style.fontSize = (dE.clientWidth * 100 / 750) + "px";
       } else {
-        document.documentElement.style.fontSize = (document.documentElement.clientHeight * 100 / 750) + "px";
+        dE.style.fontSize = (dE.clientHeight * 100 / 750) + "px";
       }
+      if (/(MI NOTE Pro)/i.test(navigator.userAgent)) {
+        dE.style.fontSize = (418 * 100 / 750) + "px";
+      }
+
     }
     setRem();
     window.onload = function () {
       setRem();
-      setInterval(setRem, 100)
+      setInterval(setRem, 100);
     }
+    document.addEventListener("DOMContentLoaded", function () {
+      setRem();
+    }, false)
   </script>
+
   <script src="./scripts/main.min.js"></script>
 </body>
 

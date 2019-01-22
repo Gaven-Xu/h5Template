@@ -1,5 +1,5 @@
 @function image($url){
-  @return url('../imgs/'+$url) top center no-repeat / contain;
+  @return url('../imgs/'+$url) top center no-repeat;
 }
 $spin:rgba(0, 255, 0, 0.2);
 
@@ -28,11 +28,11 @@ body,.container{
 body{
   font-size:16px;
   width:7.5rem;
-  max-width:100%;
   margin:0 auto;
 }
 .header{
   background: image('back.jpg');
+  background-size: cover;
   width:7.5rem;
   max-width:100%;
   height:7.93rem;
@@ -50,6 +50,7 @@ body{
     top:-0.49rem;
     left:50%;
     transform:translate3d(-50%,0,0);
+    background-size: contain !important;
   }
   .title{
     background: #fff;
@@ -72,6 +73,7 @@ body{
       height:2.52rem;
       margin-left:-2.2rem;
       border-radius: 6px;
+      box-shadow: 0px 3px 4px 1px	rgba(140, 140, 140, 0.17);
       .hot{
         width: 0.67rem;
         height: 0.37rem;
@@ -99,6 +101,7 @@ body{
         width:1.49rem;
         height:0.55rem;
         background: image('btn_t_0.png');
+        background-size: contain !important;
         margin:8px 0;
       }
       .checked{
@@ -153,6 +156,7 @@ body{
     border-radius: 50px;
     margin: 8px auto;
     background: image('btn_0.png');
+    background-size: contain !important;
   }
   .checked{
     background:image('btn_1.png');
@@ -164,28 +168,33 @@ body{
   color: #6fb0ed; }
 
 .week.week1 .tag {
-  background: image("week1.png"); }
+  background: image("week1.png");
+ }
 .week.week1 .title {
   color: #cc4212; }
 
 .week.week2 .tag {
-  background: image("week2.png"); }
+  background: image("week2.png"); 
+}
 .week.week2 .title {
-  color: #e80f0f; }
-
+  color: #e80f0f;
+ }
 .week.week3 .tag {
-  background: image("week3.png"); }
+  background: image("week3.png");
+ }
 .week.week3 .title {
-  color: #ca7130; }
-
+  color: #ca7130;
+ }
 .week.week4 .tag {
-  background: image("week4.png"); }
+  background: image("week4.png");
+ }
 .week.week4 .title {
-  color: #18bce5; }
-
+  color: #18bce5;
+ }
 
 .tail{
   background: image('backbottom.png');
+  background-size: cover;
   width:7.5rem;
   max-width:100%;
   height:1.1rem;
@@ -193,6 +202,7 @@ body{
 
 .weixin{
   background: image('weixin.png');
+  background-size: cover;
   width:100%;
   width:7.5rem;
   max-width:100%;
@@ -208,6 +218,7 @@ body{
     width: 2.25rem;
     height: 1.89rem;
     background:image('mailBox.png');
+    background-size: cover;
     position: absolute;
     top:-.945rem;
     left:50%;
