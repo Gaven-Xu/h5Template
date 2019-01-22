@@ -2,8 +2,6 @@
 
   // 检测设备类型
   let { isInApp, mobileType } = checkEnvironment();
-  // TODO: 模拟在APP中，上线之前去掉
-  isInApp = true;
 
   // 项目配置.
   let api = 'http://qaapi.ellabook.cn/rest/api/service';
@@ -45,7 +43,8 @@
       lineHeight: '.6rem',
       borderRadius: '.32rem',
       margin: '.3rem auto 0',
-      color: '#fff'
+      color: '#fff',
+      fontSize: '.26rem'
     },
     closeStyle: {
       display: 'none'
@@ -224,7 +223,6 @@
 
   }
 
-  // TODO: 模拟请求到数据之后的回掉
   $.post(api, {
     method: 'ella.activity.getWinterVacationBooks',
     content: JSON.stringify({
@@ -241,8 +239,6 @@
       init(res.data);
       document.getElementById('Loading').style.display = 'none';
       document.getElementById('Loading').remove();
-      document.documentElement.style.height = null;
-      document.documentElement.style.overflow = null;
     }
   })
 

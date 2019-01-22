@@ -84,6 +84,9 @@
         }
       }
     })
+    alertContainer.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+    })
 
     /**
      * 处理 props.content
@@ -286,10 +289,6 @@
       // 这个确实是在打开之后执行的，弹窗标签已经加入到页面，但是会被alert阻断，所以，这个增加了一个50ms的延迟，主要是针对alert
       // 对于 onClosed 也是一样
     }
-
-    document.documentElement.style.height = '100%';
-    document.documentElement.style.overflow = 'hidden';
-
   }
   /**
    * 清除原弹窗
@@ -309,8 +308,6 @@
         callback()
       }, 50)
     }
-    document.documentElement.style.height = null;
-    document.documentElement.style.overflow = null;
   }
 
   function addStyle(target, styleObj) {
