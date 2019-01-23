@@ -95,6 +95,19 @@ function esWatch(cb) {
 }
 
 /**
+ * 
+ * html 监听
+ */
+function reloadHTML() {
+  return gulp.src(dirname + '/index.html')
+    .pipe(connect.reload())
+}
+function htmlWatch(cb) {
+  gulp.watch([dirname + '/index.html'], { events: 'all' }, reloadHTML);
+  cb();
+}
+
+/**
  * connect 
  */
 function connectWatch(cb) {
@@ -134,7 +147,7 @@ function zipClean(cb) {
   return del([dirname + '/dist/**', dirname + '/dist.zip'], cb);
 }
 
-exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, connectWatch);
+exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, htmlWatch, connectWatch);
 
 exports.build = series(cssClean, jsClean, scss, es);
 
