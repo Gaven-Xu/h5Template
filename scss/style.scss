@@ -43,6 +43,7 @@ body{
   border-radius: 8px;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.14);
   position: relative;
+  background:#fff;
   .tag{
     width:2.97rem;
     height:0.71rem;
@@ -110,8 +111,32 @@ body{
     }
   }
   .divide{
+    height:10px;
     width:100%;
     display: block;
+    position: relative;
+    .round{
+      width: 8px;
+      height: 8px;
+      top:1px;
+      background: #3cb5f3;
+      border-radius: 100px;
+      position: absolute;
+    }
+    .left{
+      left:-3px
+    }
+    .right{
+      right:-3px;
+    }
+    .line{
+      height: 0px;
+      border-bottom: 1px dashed #cacaca;
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 5px;
+    }
   }
   .content{
     /* @extend %floatBox;*/

@@ -1,0 +1,1 @@
+window.ellaH5API = 'http://qaapi.ellabook.cn/rest/api/service';
