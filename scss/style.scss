@@ -91,7 +91,7 @@ body{
     }
     .book-content{
       .book-name{
-        font:.32rem/.5rem '微软雅黑';
+        font:bold .32rem/.5rem '微软雅黑';
         color: #444;
       }
       .book-desc{
@@ -146,7 +146,7 @@ body{
     .book{
       font:12px '微软雅黑';
       width:1.72rem;
-      height:2.89rem;
+      // height:2.89rem;
       margin:0.2rem;
       display: inline-block;
       vertical-align: top;
@@ -166,10 +166,11 @@ body{
       .name{
         font-family: SourceHanSansCN-Medium;
         font-size: .24rem;
-        line-height: .65rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding:.21rem 0 0;
+        // line-height: .65rem;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
         color: #343434;
       }
     }

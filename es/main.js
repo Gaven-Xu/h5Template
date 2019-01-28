@@ -84,10 +84,10 @@
        * 如果不是最后一周，则是top(1)+content(6)的结构
        * 如果是最后一周，则是cotent(3)的结构
        */
-      if (index !== totalList.length - 1) {
-        let book = bookList[0];
-        // 创建 推荐图书
-        top = `
+      // if (index !== totalList.length - 1) {
+      let book = bookList[0];
+      // 创建 推荐图书
+      top = `
             <div class="top">
               <div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
                 <div class="hot">推荐</div>
@@ -99,8 +99,8 @@
               </div>
             </div>
           `;
-        normalBookList = normalBookList.slice(1);
-      }
+      normalBookList = normalBookList.slice(1);
+      // }
 
       // 创建图书列表
       normalBookList.forEach((book, index, bookLish) => {
