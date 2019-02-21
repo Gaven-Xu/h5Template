@@ -21,7 +21,7 @@ let gulp = require('gulp'),
 // let dirname = "./public/h5/regist/";
 const { series, parallel } = require('gulp');
 let dirname = "./src";
-let output = "./dist";
+// let output = "./dist";
 let args = process.argv.slice(2);
 let isDev = args.indexOf('--dev') !== -1
 
@@ -122,23 +122,9 @@ function connectWatch(cb) {
  * zip code
  */
 function zipCode() {
-  return gulp.src([
-    `${dirname}/**/*`,
-    // `!${dirname}/node_modules/**/*`,
-    // `!${dirname}/.git/**/*`,
-    // `!${dirname}/assets/**/*`,
-    // `!${dirname}/dist/**/*`,
-    `!${dirname}/es/**/*`,
-    `!${dirname}/scss/**/*`,
-    // `!${dirname}/.babelrc`,
-    // `!${dirname}/.gitignore`,
-    // `!${dirname}/gulpfile.js`,
-    // `!${dirname}/package.json`,
-    // `!${dirname}/readme.md`,
-  ], {
-      nodir: true
-    })
-    .pipe(gulp.dest(output))
+  return gulp.src([`${dirname}/**/*`], {
+    nodir: true
+  })
     .pipe(zip('dist.zip'))
     .pipe(gulp.dest('.'));
 }

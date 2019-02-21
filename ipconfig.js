@@ -1,1 +1,1 @@
-window.ellaBookH5IP = 'http://qaapi.ellabook.cn';
+window.ellaBookH5IP = 'http://qaapi.ellabook.cn'; 
