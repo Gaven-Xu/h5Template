@@ -10,11 +10,11 @@ html:
 规范的目的是方便大家，简化开发流程，减少重复工作
 如有不便的地方，希望及时反馈给我
 
-:smile: 徐佳程
+😀 徐佳程
 
-:phone: 18758037064 (电话、钉钉、微信)
+☎ 18758037064 (电话、钉钉、微信)
 
-:email: xujiacheng@ellabook.cn
+✉ xujiacheng@ellabook.cn
 
 # 2. 项目说明
 
