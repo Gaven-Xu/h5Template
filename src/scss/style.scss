@@ -1,7 +1,7 @@
 @function image($url){
   @return url('../imgs/'+$url) top center no-repeat;
 }
-$spin:rgba(0, 255, 0, 0.2);
+$spin:rgba(0, 255, 0, 0.2); 
 
 %floatBox{
   &>*{

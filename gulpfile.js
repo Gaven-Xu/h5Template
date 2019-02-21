@@ -20,8 +20,8 @@ let gulp = require('gulp'),
 
 // let dirname = "./public/h5/regist/";
 const { series, parallel } = require('gulp');
-let dirname = ".";
-let output = dirname;
+let dirname = "./src";
+let output = "./dist";
 let args = process.argv.slice(2);
 let isDev = args.indexOf('--dev') !== -1
 
@@ -48,7 +48,7 @@ function scss() {
       path.basename += '.min'
     }))
     .pipe(gulpif(isDev, sm.write('./maps'))) // 开发模式，生成代码sourcemaps
-    .pipe(gulp.dest(output + '/css'))
+    .pipe(gulp.dest(dirname + '/css'))
     .pipe(connect.reload());
   return steam;
 }
@@ -79,14 +79,14 @@ function es() {
       path.basename += '.min'
     }))
     .pipe(gulpif(isDev, sm.write('./maps'))) // 开发模式，生成代码sourcemaps
-    .pipe(gulp.dest(output + '/scripts'))
+    .pipe(gulp.dest(dirname + '/js'))
     .pipe(connect.reload());
 
   return steam;
 }
 
 function jsClean(cb) {
-  return del([dirname + '/scripts/**'], cb);
+  return del([dirname + '/js/**'], cb);
 }
 
 function esWatch(cb) {
@@ -112,7 +112,7 @@ function htmlWatch(cb) {
  */
 function connectWatch(cb) {
   connect.server({
-    root: dirname,
+    root: '.',
     livereload: true
   });
   cb();
@@ -121,30 +121,34 @@ function connectWatch(cb) {
 /**
  * zip code
  */
-function zipCode(cb) {
+function zipCode() {
   return gulp.src([
     `${dirname}/**/*`,
-    `!${dirname}/node_modules/**/*`,
-    `!${dirname}/.git/**/*`,
-    `!${dirname}/assets/**/*`,
-    `!${dirname}/dist/**/*`,
+    // `!${dirname}/node_modules/**/*`,
+    // `!${dirname}/.git/**/*`,
+    // `!${dirname}/assets/**/*`,
+    // `!${dirname}/dist/**/*`,
     `!${dirname}/es/**/*`,
     `!${dirname}/scss/**/*`,
-    `!${dirname}/.babelrc`,
-    `!${dirname}/.gitignore`,
-    `!${dirname}/gulpfile.js`,
-    `!${dirname}/package.json`,
-    `!${dirname}/readme.md`,
+    // `!${dirname}/.babelrc`,
+    // `!${dirname}/.gitignore`,
+    // `!${dirname}/gulpfile.js`,
+    // `!${dirname}/package.json`,
+    // `!${dirname}/readme.md`,
   ], {
       nodir: true
     })
-    .pipe(gulp.dest(output + '/dist'))
+    .pipe(gulp.dest(output))
     .pipe(zip('dist.zip'))
-    .pipe(gulp.dest(output));
+    .pipe(gulp.dest('.'));
 }
 
 function zipClean(cb) {
-  return del([dirname + '/dist/**', dirname + '/dist.zip'], cb);
+  return del('./dist.zip', cb);
+}
+
+function distClean(cb) {
+  return del('./dist/**', cb);
 }
 
 exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, htmlWatch, connectWatch);
@@ -153,4 +157,4 @@ exports.build = series(cssClean, jsClean, scss, es);
 
 exports.clean = parallel(cssClean, jsClean, zipClean);
 
-exports.zip = series(cssClean, jsClean, scss, es, zipClean, zipCode);
+exports.zip = series(cssClean, jsClean, scss, es, zipClean, zipCode, distClean);

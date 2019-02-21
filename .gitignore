@@ -7,3 +7,6 @@
 # 编译代码
 /css
 /scripts
+
+# 忽略压缩文件
+/dist.zip

@@ -4,7 +4,7 @@
   let { isInApp, mobileType } = checkEnvironment();
 
   // 项目配置.
-  let api = window.ellaH5API || 'http://qaapi.ellabook.cn/rest/api/service';
+  let api = window.ellaBookH5IP ? window.ellaBookH5IP + '/rest/api/service' : 'http://qaapi.ellabook.cn/rest/api/service';
   let downloadLink = 'https://a.app.qq.com/o/simple.jsp?pkgname=com.ellabook';
   let modalTitle = "订阅成功", modalContent = "感谢喜欢这本书，绘本上线当天会通知您来看哦！", modalNotice = "";
   if (!isInApp) {

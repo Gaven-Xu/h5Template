@@ -1,1 +1,1 @@
-window.ellaH5API = 'http://qaapi.ellabook.cn/rest/api/service';
+window.ellaBookH5IP = 'http://qaapi.ellabook.cn';
