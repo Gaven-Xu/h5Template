@@ -42,6 +42,7 @@ html:
         |--es           js开发目录，ES3，ES6都写在这里，该目录的js会进行编译、压缩、混淆
         |--scss         css开发目录，统一采用scss后缀
         |--lib          第三方库目录，第三方的css或者js都可以放到这里，不进行任何压缩，例如zepto.min.js
+          |--ellaH5     公司统一抽离出来的工具库，不需要压缩的
         |--fonts        字体目录，需要使用自定义字体的时候，请在线进行字体裁剪 https://www.disidu.com/online-ttf-subset.html
         |--imgs         图片目录
         |--js           !!! css和js目录，都是编译后的目录，会被自动编译清空，不要手动在这两个目录写任何代码
