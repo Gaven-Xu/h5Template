@@ -80,8 +80,28 @@ gulp zip
 ## 2.5. 注意事项
 不要在 css 和 js 目录下创建代码，会被自动化编译删除
 不需要编译的代码，以及第三方的插件，建议放到lib下
+# ruby和jsduck安装
+本项目配置了文档生成工具，gulp-jsduck，需要依赖于ruby，以及jsduck，这两个东西仅安装一次就可以了：
+http://www.ruby-lang.org/en/documentation/installation/#rubyinstaller
 
-# 3. gulp命令
+安装好ruby之后，执行
+```ruby
+gem install jsduck
+```
+# 3. gulp安装
+由于本项目使用gulp4.0，在gulp-cli的安装上有点区别
+```sh
+npm install gulpjs/gulp-cli -g
+或
+cnpm install gulpjs/gulp-cli -g
+
+如果报权限相关的错误，请用管理员权限打开gulp
+
+gulp -v之后应该显示
+CLI version 3.9.1
+Local version 4.0.0
+```
+# 4. gulp命令
 
 
 - gulp / gulp default
