@@ -8,6 +8,7 @@ let gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   del = require('del'),
   connect = require('gulp-connect'),
+  concat = require('gulp-concat'),
   notify = require('gulp-notify'),
   apf = require('gulp-autoprefixer'),
   babel = require('gulp-babel'),
@@ -66,7 +67,7 @@ function scssWatch(cb) {
  * @description for js
  */
 function es() {
-  let steam = gulp.src(dirname + '/es/**/*.js')
+  let steam = gulp.src([dirname + '/es/**/*.js'])
     .pipe(cached('esCachedFile'))
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
@@ -85,12 +86,31 @@ function es() {
   return steam;
 }
 
+function ellaH5() {
+  let steam = gulp.src([dirname + '/lib/ellaH5/*.js'])
+    .pipe(cached('esH5CachedFile'))
+    .pipe(gulpif(isDev, sm.init())) // 开发模式，生成代码sourcemaps
+    .pipe(plumber({
+      errorHandler: notify.onError("Error: <%= error.message %>")
+    }))
+    .pipe(babel())
+    .pipe(uglify())
+    // .pipe(gulpif(!isDev, obfuscator())) // 非开发模式，则混淆加密js代码
+    .pipe(concat('ellaH5.min.js'))//合并后的文件名
+    .pipe(gulpif(isDev, sm.write('./maps'))) // 开发模式，生成代码sourcemaps
+    .pipe(gulp.dest(dirname + '/lib'))
+    .pipe(connect.reload());
+
+  return steam;
+}
+
 function jsClean(cb) {
-  return del([dirname + '/js/**'], cb);
+  return del([dirname + '/js/**', dirname + '/lib/ellaH5.min.js'], cb);
 }
 
 function esWatch(cb) {
   gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, es);
+  gulp.watch([dirname + '/lib/ellaH5/*.js'], { events: 'all' }, ellaH5);
   cb();
 }
 
@@ -137,10 +157,10 @@ function distClean(cb) {
   return del('./dist/**', cb);
 }
 
-exports.default = series(cssClean, jsClean, scss, es, scssWatch, esWatch, htmlWatch, connectWatch);
+exports.default = series(cssClean, jsClean, scss, es, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
 
-exports.build = series(cssClean, jsClean, scss, es);
+exports.build = series(cssClean, jsClean, scss, es, ellaH5);
 
 exports.clean = parallel(cssClean, jsClean, zipClean);
 
-exports.zip = series(cssClean, jsClean, scss, es, zipClean, zipCode, distClean);
+exports.zip = series(cssClean, jsClean, scss, es, ellaH5, zipClean, zipCode, distClean);

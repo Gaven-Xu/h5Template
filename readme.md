@@ -25,7 +25,10 @@ html:
 - [x] 开发环境sourcemaps，生产环境混淆加密
 - [x] 生成zip部署包（gulp zip）
 - [ ] 图片压缩
-- [ ] H5的js工具库ellaH5（弹窗、url取参）
+- [x] H5的js工具库ellaH5（弹窗、url取参）
+  - [x] setRem
+  - [x] getQuery
+  - [x] alert
 
 ## 2.1. 项目结构
 

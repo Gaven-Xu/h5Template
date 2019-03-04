@@ -17,7 +17,7 @@
   }
 
   // // 弹窗属性配置
-  window.ellaH5.options = {
+  window.ellaH5.alertOptions = {
     id: 'AlertBox',
     style: {
       width: '70%',
@@ -196,7 +196,7 @@
                 $.post(api, {
                   method: 'ella.activity.subscribeBooks',
                   content: JSON.stringify({
-                    uid: urlHandle.getParameter('uid'),
+                    uid: ellaH5.getQuery('uid'),
                     bookCode: that.dataset.code
                   })
                 }, function (res) {
@@ -230,7 +230,7 @@
   $.post(api, {
     method: 'ella.activity.getWinterVacationBooks',
     content: JSON.stringify({
-      uid: urlHandle.getParameter('uid')
+      uid: ellaH5.getQuery('uid')
     })
   }, function (res) {
     res = JSON.parse(res);

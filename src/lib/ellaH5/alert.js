@@ -4,6 +4,12 @@
   var namespace = 'ellaH5';
   window[namespace] = window[namespace] || {};
 
+  // 定时器存储器
+  window[namespace].alertTimeout = null;
+
+  // 配置的暴露方法
+  window[namespace].alertOptions = {};
+
   /**
    *
    * @param {string}  value       需要弹出的内容，字符串
@@ -27,12 +33,10 @@
    *
    * @ps clearAlert为清楚alert弹窗的方法，未暴露，自带回调，会判断onClosed方法，并执行
    */
-  window[namespace].alertTimeout = null;
-  window[namespace].options = {};
   window[namespace].alert = function (value, _props) {
 
     var props = {
-      ...window[namespace].options,
+      ...window[namespace].alertOptions,
       ..._props,
     }
 
@@ -290,6 +294,7 @@
       // 对于 onClosed 也是一样
     }
   }
+
   /**
    * 清除原弹窗
    * @param {string} id
@@ -310,14 +315,13 @@
     }
   }
 
+  /**
+   * 遍历添加样式
+   */
   function addStyle(target, styleObj) {
     for (var key in styleObj) {
       target.style[key] = styleObj[key];
     }
   }
 
-  function bodyLock(event) {
-    event.preventDefault();
-  }
-
-})()
+}.call(this))

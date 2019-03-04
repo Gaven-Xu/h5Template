@@ -17,6 +17,7 @@
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cached": "^1.1.1",
+    "gulp-concat": "2.6.1",
     "gulp-connect": "^5.7.0",
     "gulp-if": "2.0.2",
     "gulp-javascript-obfuscator": "1.1.5",

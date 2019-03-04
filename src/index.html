@@ -10,9 +10,8 @@
   <link rel="stylesheet" href="./css/style.min.css">
   <link rel="shortcut icon" href="data:image/jpeg;" type="image/x-icon">
   <script src="../ipConfig.js"></script>
-  <script src="./js/alert.min.js"></script>
   <script src="./lib/zepto.min.js"></script>
-  <script src="./lib/urlHandle.js"></script>
+  <script src="./lib/ellaH5.min.js"></script>
   <style>
     @font-face {
       font-family: styuanti;
@@ -107,6 +106,7 @@
   <div class="tail"></div>
   <div class="weixin"></div>
   <script>
+    // rem布局需要，非rem布局可以注释掉
     function setRem() {
       var dE = document.documentElement;
       dE.style.fontSize = (dE.clientWidth * 100 / 750) + "px";
@@ -118,7 +118,6 @@
       if (/(MI NOTE Pro)/i.test(navigator.userAgent)) {
         dE.style.fontSize = (418 * 100 / 750) + "px";
       }
-
     }
     setRem();
     window.onload = function () {
