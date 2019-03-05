@@ -1,4 +1,45 @@
-(function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Source: main.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkEnvironment">checkEnvironment</a></li><li><a href="global.html#createWeeks">createWeeks</a></li><li><a href="global.html#init">init</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: main.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function () {
 
   let { isInApp, mobileType } = checkEnvironment();
 
@@ -54,27 +95,27 @@
    * @function createWeeks
    * @description 创建周阅读数据DOM
    * @param {Array} totalList 总课表数组
-   * @returns {DOM} 共4周的页面元素
+   * @returns {DOM}
    */
   function createWeeks(totalList) {
     let result = '';
     let titles = [
-      `<span>放假啦~~让宝宝在假期开始时</span>
-      <span>放松身心，准备迎接美好的寒假生活</span>`,
+      `&lt;span>放假啦~~让宝宝在假期开始时&lt;/span>
+      &lt;span>放松身心，准备迎接美好的寒假生活&lt;/span>`,
 
-      `<span>马上就要过年啦~~我们又长大了一岁</span>
-      <span>多学些人文知识，在假期增长宝宝的眼界！</span>`,
+      `&lt;span>马上就要过年啦~~我们又长大了一岁&lt;/span>
+      &lt;span>多学些人文知识，在假期增长宝宝的眼界！&lt;/span>`,
 
-      `<span>过年啦~~大家春节快乐</span>
-      <span>带宝宝一起来了解中国传统的过年习俗吧</span>`,
+      `&lt;span>过年啦~~大家春节快乐&lt;/span>
+      &lt;span>带宝宝一起来了解中国传统的过年习俗吧&lt;/span>`,
 
-      `<span>假期接近尾声了，别难过</span>
-      <span>打开绘本，继续奇妙的梦幻之旅</span>`,
+      `&lt;span>假期接近尾声了，别难过&lt;/span>
+      &lt;span>打开绘本，继续奇妙的梦幻之旅&lt;/span>`,
 
-      `<span>开学恐惧症？不怕</span>
-      <span>每天一部动画书，给你假期好心情</span>`
+      `&lt;span>开学恐惧症？不怕&lt;/span>
+      &lt;span>每天一部动画书，给你假期好心情&lt;/span>`
     ]
-    for (let index = 0; index < totalList.length; index++) {
+    for (let index = 0; index &lt; totalList.length; index++) {
       const weekData = totalList[index];
 
       let top = '';
@@ -88,51 +129,51 @@
        */
       let book = bookList[0];
       top = `
-            <div class="top">
-              <div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
-                <div class="hot">推荐</div>
-              </div>
-              <div class="book-content">
-                <div class="book-name">《${book.bookName}》</div>
-                <div class="book-desc">${book.bookIntroduction}</div>
-                <div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}"></div>
-              </div>
-            </div>
+            &lt;div class="top">
+              &lt;div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
+                &lt;div class="hot">推荐&lt;/div>
+              &lt;/div>
+              &lt;div class="book-content">
+                &lt;div class="book-name">《${book.bookName}》&lt;/div>
+                &lt;div class="book-desc">${book.bookIntroduction}&lt;/div>
+                &lt;div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}">&lt;/div>
+              &lt;/div>
+            &lt;/div>
           `;
       normalBookList = normalBookList.slice(1);
 
       /** 创建图书列表 */
       normalBookList.forEach((book, index, bookLish) => {
         content += `
-            <div class="book" ${index === 3 ? 'style="clear:both"' : ''}>
-              <div class="cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
-                <div>
-                  <div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}"></div>
-                </div>
-              </div>
-              <div class="name">${book.bookName}</div>
-            </div>
+            &lt;div class="book" ${index === 3 ? 'style="clear:both"' : ''}>
+              &lt;div class="cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
+                &lt;div>
+                  &lt;div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}">&lt;/div>
+                &lt;/div>
+              &lt;/div>
+              &lt;div class="name">${book.bookName}&lt;/div>
+            &lt;/div>
           `;
       })
 
       /** 生成weeks代码串 */
       result += `
-          <div class="week week${index}">
-              <div class="tag"></div>
-              <div class="title">
-                <span>${weekData.planTitle.substr(5)}</span>
+          &lt;div class="week week${index}">
+              &lt;div class="tag">&lt;/div>
+              &lt;div class="title">
+                &lt;span>${weekData.planTitle.substr(5)}&lt;/span>
                 ${titles[index]}
-              </div>
+              &lt;/div>
               ${top}
-              <div class="divide">
-                <div class="left round"></div>
-                <div class="line"></div>
-                <div class="right round"></div>
-              </div>
-              <div class="content">
+              &lt;div class="divide">
+                &lt;div class="left round">&lt;/div>
+                &lt;div class="line">&lt;/div>
+                &lt;div class="right round">&lt;/div>
+              &lt;/div>
+              &lt;div class="content">
                 ${content}
-              </div>
-          </div>
+              &lt;/div>
+          &lt;/div>
         `;
     }
     return result;
@@ -146,12 +187,12 @@
   function checkEnvironment() {
     let isInApp, mobileType;
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-      if (!!window.webkit && !!window.webkit.messageHandlers && !!window.webkit.messageHandlers.showSharePop) {
+      if (!!window.webkit &amp;&amp; !!window.webkit.messageHandlers &amp;&amp; !!window.webkit.messageHandlers.showSharePop) {
         isInApp = true;
       }
       mobileType = "iPhone";
     } else if (/(Android)/i.test(navigator.userAgent)) {
-      if (!!window.WebView && !!window.WebView.showSharePop) {
+      if (!!window.WebView &amp;&amp; !!window.WebView.showSharePop) {
         isInApp = true;
       }
       mobileType = "Android";
@@ -182,19 +223,19 @@
     let btns = document.querySelectorAll('.book-btn');
 
     try {
-      for (var index = 0; index < btns.length; index++) {
+      for (var index = 0; index &lt; btns.length; index++) {
         var btn = btns[index];
         btn.onclick = function (e) {
 
           let that = this;
 
           let message = `
-          <div class="mail"></div>
-          <div>
-          <div class="title">${modalTitle}</div>
-          <div class="content">${modalContent}</div>
-          <div class="notice">${modalNotice}</div>
-          </div>
+          &lt;div class="mail">&lt;/div>
+          &lt;div>
+          &lt;div class="title">${modalTitle}&lt;/div>
+          &lt;div class="content">${modalContent}&lt;/div>
+          &lt;div class="notice">${modalNotice}&lt;/div>
+          &lt;/div>
           `;
 
           window.ellaH5.alert(message, {
@@ -215,10 +256,10 @@
                     })
                   }
                 })
+
               } else {
                 window.open(downloadLink)
               }
-
               /** 按钮状态 */
               if (!that.classList.contains('checked')) {
                 that.classList.add('checked')
@@ -253,4 +294,22 @@
     }
   })
 
-})()
+})()</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 05 2019 17:33:41 GMT+0800 (中国标准时间) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>H5项目文档 Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.readable.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">H5项目文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#checkEnvironment">checkEnvironment</a></li><li><a href="global.html#createWeeks">createWeeks</a></li><li><a href="global.html#init">init</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><hr>
+<p>title: &quot;H5开发文档&quot;
+export_on_save:
+  html: true
+html: </p>
+<h2>  toc: true</h2><h1>1. 联系方式</h1><p>规范的目的是方便大家，简化开发流程，减少重复工作
+如有不便的地方，希望及时反馈给我</p>
+<p>😀 徐佳程</p>
+<p>📞 18758037064 (电话、钉钉、微信)</p>
+<p>✉ <a href="mailto:xujiacheng@ellabook.cn">xujiacheng@ellabook.cn</a></p>
+<h1>2. 项目说明</h1><p>基于Gulp配置的自动化流程，目前支持的功能：</p>
+<ul>
+<li>[x] scss编译，压缩</li>
+<li>[x] es6编译，压缩，混淆加密</li>
+<li>[x] 开发环境sourcemaps，生产环境混淆加密</li>
+<li>[x] 生成zip部署包（gulp zip）</li>
+<li>[ ] 图片压缩</li>
+<li>[x] H5的js工具库ellaH5（弹窗、url取参）<ul>
+<li>[x] setRem</li>
+<li>[x] getQuery</li>
+<li>[x] alert</li>
+</ul>
+</li>
+</ul>
+<h2>2.1. 项目结构</h2><pre class="prettyprint source lang-sh"><code># 此处仅列出与开发相关的部分
+
+|--[项目目录]
+    |--ipConfig.js      这里配置的是接口地址，可以修改ip和端口，但是不要增加和修改额外部分
+    |--src              开发目录
+        |--index.html   项目首页，如果有多页面，放在与index.html同一级
+        |--es           js开发目录，ES3，ES6都写在这里，该目录的js会进行编译、压缩、混淆
+        |--scss         css开发目录，统一采用scss后缀
+        |--lib          第三方库目录，第三方的css或者js都可以放到这里，不进行任何压缩，例如zepto.min.js
+          |--ellaH5     公司统一抽离出来的工具库，不需要压缩的
+        |--fonts        字体目录，需要使用自定义字体的时候，请在线进行字体裁剪 https://www.disidu.com/online-ttf-subset.html
+        |--imgs         图片目录
+        |--js           !!! css和js目录，都是编译后的目录，会被自动编译清空，不要手动在这两个目录写任何代码
+        |--css          !!! css和js目录，都是编译后的目录，会被自动编译清空，不要手动在这两个目录写任何代码</code></pre><h2>2.2. 开发步骤</h2><pre class="prettyprint source lang-sh"><code># 从以下地址拉取H5-template，
+git clone git@git.ellabook.cn:front-end/h5-template.git [项目目录]
+cd [项目目录]
+gulp
+
+# 根据约定好的目录结构开发
+
+# 部署之前
+gulp zip
+
+# 如果部署人员需要zip包，把dist.zip发过去即可，如果需要自己部署到ftp，复制src下全部内容即可
+</code></pre><h2>2.3. 第三方库</h2><ul>
+<li>尽可能选择体积小的，比如jQuery和Zepto，尽量使用Zepto</li>
+<li>不要从第三方CDN访问，使用的第三方工具放入lib目录</li>
+</ul>
+<h2>2.4. 工具封装</h2><ul>
+<li>自己封装的工具，放在es目录下，后续可以提供给架构组，加入到ellaH5工具库中</li>
+</ul>
+<h2>2.5. 注意事项</h2><p>不要在 css 和 js 目录下创建代码，会被自动化编译删除
+不需要编译的代码，以及第三方的插件，建议放到lib下</p>
+<h1>注释规范</h1><p>注释按照jsdoc规范要求：http://usejsdoc.org/</p>
+<pre class="prettyprint source lang-js"><code>/** 
+ * @function checkEnvironment
+ * @description 检测设备类型
+ * @param {string} defaultType 当检测到不是iPhone和Android时的默认返回
+ * @returns {string} iPhone|Android|defaultType
+ */
+function checkEnvironment(defaultType) {
+  // isInApp 是否在APP中，mobileType 手机操作系统类型
+  let isInApp, mobileType;
+  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+    if (!!window.webkit && !!window.webkit.messageHandlers && !!window.webkit.messageHandlers.showSharePop) {
+      isInApp = true;
+    }
+    mobileType = &quot;iPhone&quot;;
+  } else if (/(Android)/i.test(navigator.userAgent)) {
+    if (!!window.WebView && !!window.WebView.showSharePop) {
+      isInApp = true;
+    }
+    mobileType = &quot;Android&quot;;
+  } else {
+    isInApp = false;
+    mobileType = defaultType;
+  }
+
+  window.isInApp = isInApp;
+  window.mobileType = mobileType;
+
+  return {
+    isInApp: !!isInApp,
+    mobileType
+  }
+}</code></pre><h1>3. ruby和jsduck安装</h1><p>本项目配置了文档生成工具，gulp-jsduck，需要依赖于ruby，以及jsduck，这两个东西仅安装一次就可以了：
+http://<a href="http://www.ruby-lang.org/en/documentation/installation/#rubyinstaller">www.ruby-lang.org/en/documentation/installation/#rubyinstaller</a></p>
+<p>安装好ruby之后，执行</p>
+<pre class="prettyprint source lang-ruby"><code>gem install jsduck</code></pre><h1>4. gulp安装</h1><p>由于本项目使用gulp4.0，在gulp-cli的安装上有点区别</p>
+<pre class="prettyprint source lang-sh"><code>npm install gulpjs/gulp-cli -g
+或
+cnpm install gulpjs/gulp-cli -g
+
+如果报权限相关的错误，请用管理员权限打开gulp
+
+gulp -v之后应该显示
+CLI version 3.9.1
+Local version 4.0.0</code></pre><h1>5. gulp命令</h1><ul>
+<li><p>gulp / gulp default</p>
+<pre class="prettyprint source"><code>编译scss和es
+然后开启相关的监听</code></pre></li>
+<li><p>gulp build</p>
+<pre class="prettyprint source"><code>清理 css 和 js 目录
+然后编译scss和es</code></pre></li>
+<li><p>gulp clean</p>
+<pre class="prettyprint source"><code>仅清理 css 和 js 目录</code></pre></li>
+<li><p>gulp zip</p>
+<pre class="prettyprint source"><code>清理 css 和 js 目录
+编译 scss 和 es
+清理 zip 文件
+压缩 zip 文件</code></pre></li>
+<li><p>--dev</p>
+<pre class="prettyprint source"><code>为方便调试，可以根据需要，在上述命令后面加上--dev
+生成 sourcemaps
+不进行混淆加密
+gulp --dev</code></pre></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	
+		on 2019-03-05T17:56:02+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

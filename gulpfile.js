@@ -15,7 +15,9 @@ let gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   obfuscator = require('gulp-javascript-obfuscator'),
   zip = require('gulp-zip'),
-  gulpif = require('gulp-if');
+  gulpif = require('gulp-if'),
+  apidoc = require('gulp-apidoc'),
+  jsdoc = require('gulp-jsdoc3');
 
 // sass.compiler = require('node-sass');
 
@@ -109,7 +111,8 @@ function jsClean(cb) {
 }
 
 function esWatch(cb) {
-  gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, es);
+  // es发生变化，编译es，同时更新文档
+  gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, parallel(es, compileDoc));
   gulp.watch([dirname + '/lib/ellaH5/*.js'], { events: 'all' }, ellaH5);
   cb();
 }
@@ -128,7 +131,8 @@ function htmlWatch(cb) {
 }
 
 /**
- * connect 
+ * @description connect 
+ * @param {function} cb 成功回调
  */
 function connectWatch(cb) {
   connect.server({
@@ -139,7 +143,7 @@ function connectWatch(cb) {
 }
 
 /**
- * zip code
+ * @description zip code
  */
 function zipCode() {
   return gulp.src([`${dirname}/**/*`], {
@@ -157,10 +161,18 @@ function distClean(cb) {
   return del('./dist/**', cb);
 }
 
-exports.default = series(cssClean, jsClean, scss, es, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
+function compileDoc(cb) {
+  let config = require('./.jsdoc.json')
+  return gulp.src(['README.MD', `${dirname}/es/**/*.js`], { read: false })
+    .pipe(jsdoc(config, cb));
+}
+
+exports.default = series(cssClean, jsClean, scss, es, compileDoc, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
 
 exports.build = series(cssClean, jsClean, scss, es, ellaH5);
 
 exports.clean = parallel(cssClean, jsClean, zipClean);
 
 exports.zip = series(cssClean, jsClean, scss, es, ellaH5, zipClean, zipCode, distClean);
+
+exports.doc = compileDoc;
