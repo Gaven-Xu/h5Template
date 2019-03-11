@@ -16,7 +16,6 @@ let gulp = require('gulp'),
   obfuscator = require('gulp-javascript-obfuscator'),
   zip = require('gulp-zip'),
   gulpif = require('gulp-if'),
-  apidoc = require('gulp-apidoc'),
   jsdoc = require('gulp-jsdoc3');
 
 // sass.compiler = require('node-sass');
