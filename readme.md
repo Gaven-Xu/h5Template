@@ -152,18 +152,14 @@ Local version 4.0.0
 
       清理 css 和 js 目录
       然后编译scss和es
+      然后生成dist
 
 - gulp clean
 
       仅清理 css 和 js 目录
+- gulp doc
 
-- gulp zip
-
-      清理 css 和 js 目录
-      编译 scss 和 es
-      清理 zip 文件
-      压缩 zip 文件
-
+      生成文档目录out
 - --dev
 
       为方便调试，可以根据需要，在上述命令后面加上--dev

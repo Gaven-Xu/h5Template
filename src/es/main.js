@@ -1,6 +1,7 @@
 (function () {
   // 项目配置.
   // console.log(window.ellaBookH5IP + '/rest/api/service')
+
   let api = window.ellaBookH5IP ? window.ellaBookH5IP + '/rest/api/service' : 'http://118.31.171.207:9000/rest/api/service';
   let exchangeCode = "";
   let thirdCode = "";
@@ -150,7 +151,6 @@
     })
 
   }
-  alert(ellaH5.getQuery('uid'))
   $.post(api, {
     method: 'ella.user.listVipExchangeMenu',
     content: JSON.stringify({
