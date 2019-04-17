@@ -144,17 +144,13 @@ function connectWatch(cb) {
 /**
  * @description zip code
  */
-function zipCode() {
+function distCode() {
   return gulp.src([`${dirname}/**/*`], {
     nodir: true
   })
-    .pipe(zip('dist.zip'))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('./dist'))
 }
 
-function zipClean(cb) {
-  return del('./dist.zip', cb);
-}
 
 function distClean(cb) {
   return del('./dist/**', cb);
@@ -168,10 +164,10 @@ function compileDoc(cb) {
 
 exports.default = series(cssClean, jsClean, scss, es, compileDoc, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
 
-exports.build = series(cssClean, jsClean, scss, es, ellaH5);
+exports.compile = series(cssClean, jsClean, scss, es, ellaH5);
 
-exports.clean = parallel(cssClean, jsClean, zipClean);
+exports.clean = parallel(cssClean, jsClean, distClean);
 
-exports.zip = series(cssClean, jsClean, scss, es, ellaH5, zipClean, zipCode, distClean);
+exports.build = series(cssClean, jsClean, scss, es, ellaH5, distCode);
 
 exports.doc = compileDoc;

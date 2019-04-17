@@ -1,140 +1,50 @@
 (function () {
-
-  let { isInApp, mobileType } = checkEnvironment();
-
   // 项目配置.
-  let api = window.ellaBookH5IP ? window.ellaBookH5IP + '/rest/api/service' : 'http://qaapi.ellabook.cn/rest/api/service';
-  let downloadLink = 'https://a.app.qq.com/o/simple.jsp?pkgname=com.ellabook';
-  let modalTitle = "订阅成功", modalContent = "感谢喜欢这本书，绘本上线当天会通知您来看哦！", modalNotice = "";
-  if (!isInApp) {
-    modalContent = "下载咿啦看书APP查看完整绘本书单";
-    modalNotice = "新用户免费赠送绘本大礼包哦";
-    document.querySelector('.weixin').style.display = 'block';
-    document.querySelector('.weixin').onclick = function () {
-      window.open(downloadLink);
-    }
-  }
-
-  // 弹窗属性配置
-  window.ellaH5.alertOptions = {
-    id: 'AlertBox',
-    style: {
-      width: '70%',
-      left: '10%',
-      top: '35%',
-      transform: 'translate(0,0)',
-      webkitTransform: 'translate(0,0)',
-      padding: '5%',
-      backgroundColor: '#ffffff',
-      borderRadius: '0.21rem'
-    },
-    maskStyle: {
-      zIndex: 1000,
-      backgroundColor: 'rgba(0,0,0,0.5)'
-    },
-    confirmText: "好的",
-    confirmStyle: {
-      display: 'block',
-      width: '1.56rem',
-      height: '.6rem',
-      background: '#5baaf3',
-      textAlign: 'center',
-      lineHeight: '.6rem',
-      borderRadius: '.32rem',
-      margin: '.3rem auto 0',
-      color: '#fff',
-      fontSize: '.26rem'
-    },
-    closeStyle: {
-      display: 'none'
-    }
-  }
+  // console.log(window.ellaBookH5IP + '/rest/api/service')
+  let api = window.ellaBookH5IP ? window.ellaBookH5IP + '/rest/api/service' : 'http://118.31.171.207:9000/rest/api/service';
+  let exchangeCode = "";
+  let thirdCode = "";
+  let thirdType = "";
 
   /** 
-   * @function createWeeks
-   * @description 创建周阅读数据DOM
+   * @function initVipData
+   * @description 创建积分换会员dom
    * @param {Array} totalList 总课表数组
-   * @returns {DOM} 共4周的页面元素
+   * @returns {DOM} 用户模块和积分换会员模块页面信息
    */
-  function createWeeks(totalList) {
+  function initVipData(data) {
     let result = '';
-    let titles = [
-      `<span>放假啦~~让宝宝在假期开始时</span>
-      <span>放松身心，准备迎接美好的寒假生活</span>`,
-
-      `<span>马上就要过年啦~~我们又长大了一岁</span>
-      <span>多学些人文知识，在假期增长宝宝的眼界！</span>`,
-
-      `<span>过年啦~~大家春节快乐</span>
-      <span>带宝宝一起来了解中国传统的过年习俗吧</span>`,
-
-      `<span>假期接近尾声了，别难过</span>
-      <span>打开绘本，继续奇妙的梦幻之旅</span>`,
-
-      `<span>开学恐惧症？不怕</span>
-      <span>每天一部动画书，给你假期好心情</span>`
-    ]
-    for (let index = 0; index < totalList.length; index++) {
-      const weekData = totalList[index];
-
-      let top = '';
-      let content = '';
-      let { winterVacationBooksDto: bookList } = weekData, normalBookList = bookList;
-
-      /**
-       * 区分最后一周
-       * 如果不是最后一周，则是top(1)+content(6)的结构
-       * 如果是最后一周，则是cotent(3)的结构
-       */
-      let book = bookList[0];
-      top = `
-            <div class="top">
-              <div class="book-cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
-                <div class="hot">推荐</div>
-              </div>
-              <div class="book-content">
-                <div class="book-name">《${book.bookName}》</div>
-                <div class="book-desc">${book.bookIntroduction}</div>
-                <div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}"></div>
-              </div>
-            </div>
-          `;
-      normalBookList = normalBookList.slice(1);
-
-      /** 创建图书列表 */
-      normalBookList.forEach((book, index, bookLish) => {
-        content += `
-            <div class="book" ${index === 3 ? 'style="clear:both"' : ''}>
-              <div class="cover" style="background:#39b3f3 url(${book.bookCoverUrl}) center no-repeat;background-size:cover;">
-                <div>
-                  <div class="book-btn ${book.subscribeStatus === 'YES' ? 'checked' : ''}" data-code="${book.bookCode}"></div>
-                </div>
-              </div>
-              <div class="name">${book.bookName}</div>
-            </div>
-          `;
-      })
-
-      /** 生成weeks代码串 */
-      result += `
-          <div class="week week${index}">
-              <div class="tag"></div>
-              <div class="title">
-                <span>${weekData.planTitle.substr(5)}</span>
-                ${titles[index]}
-              </div>
-              ${top}
-              <div class="divide">
-                <div class="left round"></div>
-                <div class="line"></div>
-                <div class="right round"></div>
-              </div>
-              <div class="content">
-                ${content}
-              </div>
+    let members = "";
+    data.list.forEach((item, index) => {
+      members += `
+          <div class="memberItem" data-params=${item.exchangeCode + ',' + item.thirdCode + ',' + item.thirdType} data-info=${item.activeTime + ',' + item.points + ',' + data.userInfo.pointsBalance}>
+          <div class="countsInfo">
+            <p>${item.title}</p>
+            <p>原价：<span>${item.price}元</span></p>
           </div>
+          <div class="counts">${item.points} 积分</div>
+        </div>
         `;
-    }
+    })
+
+
+    result += `
+        <div class="header">
+
+        <img src=${!!data.userInfo.userAvatar ? data.userInfo.userAvatar : "./imgs/defualtPho.png"} />
+        <div class="headTxt">
+          <p>${data.userInfo.userNick}</p>
+          <p>剩余会员：<span>${data.userInfo.vipLeftDays}天</span></p>
+        </div>
+      </div>
+      <div class="members">
+        <p class="title">积分换会员</p>
+        <div class="membersMain">
+         ${members}
+        </div>
+
+      </div>`
+
     return result;
   }
 
@@ -171,74 +81,84 @@
   /**
    * @function init
    * @description 主函数,根据服务端数据，创建页面
-   * @params {object} data 服务端返回的课表数据
+   * @params {object} data 服务端返回的积分换会员数据
    */
   function init(data) {
     /** 调用：创建页面方法 */
 
-    let doms = createWeeks(data);
-    document.getElementById('Weeks').innerHTML = doms;
-    /** 绑定点击事件 */
-    let btns = document.querySelectorAll('.book-btn');
+    let doms = initVipData(data);
+    $(".memberIntroduce").before(doms)
+    /** 点击弹出积分换会员弹窗*/
+    $(".memberItem").on("click", function () {
+      $(".memberModal").css({ display: "block" })
+      $(".shade").css({ display: "block" })
+      console.log($(this).data("info"))
+      let arr = $(this).data("info").split(",");
 
-    try {
-      for (var index = 0; index < btns.length; index++) {
-        var btn = btns[index];
-        btn.onclick = function (e) {
+      let activeTime = arr[0];
+      let points = arr[1];
+      let pointsBalance = arr[2];
 
-          let that = this;
 
-          let message = `
-          <div class="mail"></div>
-          <div>
-          <div class="title">${modalTitle}</div>
-          <div class="content">${modalContent}</div>
-          <div class="notice">${modalNotice}</div>
-          </div>
-          `;
+      $(".lastPoint").html(pointsBalance);
+      $(".activeTime").html(activeTime);
+      $(".points").html(points);
+      let arr2 = $(this).data("params").split(",");
+      exchangeCode = arr2[0];
+      thirdCode = arr2[1];
+      thirdType = arr2[2];
 
-          window.ellaH5.alert(message, {
-            onConfirm: function () {
-              if (isInApp) {
-                $.post(api, {
-                  method: 'ella.activity.subscribeBooks',
-                  content: JSON.stringify({
-                    uid: ellaH5.getQuery('uid'),
-                    bookCode: that.dataset.code
-                  })
-                }, function (res) {
-                  res = JSON.parse(res);
-                  if (res.status !== "1") {
-                    window.ellaH5.alert(res.message, {
-                      style: { color: '#fff' },
-                      timeout: 1500
-                    })
-                  }
-                })
-              } else {
-                window.open(downloadLink)
-              }
+    })
+    /**关闭积分换会员弹窗 */
+    $(".close").on("click", function () {
+      $(".memberModal").css({ display: "none" })
+      $(".shade").css({ display: "none" })
+    })
+    /**立即支付 */
+    $(".save").on("click", function () {
+      $.post(api, {
+        method: 'ella.order.pointsExchange',
+        content: JSON.stringify({
 
-              /** 按钮状态 */
-              if (!that.classList.contains('checked')) {
-                that.classList.add('checked')
-              }
-            }
-          });
+          // uid: "U201801241526127604534",
+          // uid: "U201801200000128",
+          exchangeCode,
+          thirdCode,
+          thirdType
+        }),
+        uid: ellaH5.getQuery('uid'),
+        channelCode: "H5",
+        token: "guest"
+      }, function (res) {
+        res = JSON.parse(res);
+        if (res.status === "1") {
+          $(".j-pop").css({ "display": "block" });
+          $(".j-pop").html("支付成功！");
+          setTimeout(function () {
+            $(".j-pop").css({ "display": "none" });
+            location.reload(true);
+          }, 2000)
+        } else {
+          $(".j-pop").css({ "display": "block" });
+          $(".j-pop").html(res.message);
+          setTimeout(function () {
+            $(".j-pop").css({ "display": "none" });
 
+          }, 2000)
         }
-      }
-    } catch (err) {
-      alert(err)
-    }
+      })
+    })
 
   }
-
+  alert(ellaH5.getQuery('uid'))
   $.post(api, {
-    method: 'ella.activity.getWinterVacationBooks',
+    method: 'ella.user.listVipExchangeMenu',
     content: JSON.stringify({
       uid: ellaH5.getQuery('uid')
+      // uid: "U201801241526127604534",
+      // uid: "U201801200000128"
     })
+
   }, function (res) {
     res = JSON.parse(res);
     if (res.status === "0") {
