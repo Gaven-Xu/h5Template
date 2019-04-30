@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <title>金小草官网</title>
+</head>
+
+<body>
+  <div class="navigator staticBlock">
+    <ul class="clearfloat">
+      <li><a class="use" href="./index.html">首页</a></li>
+      <li><a class="use active" href="./about.html">关于金小草</a></li>
+      <li><a class="use" href="./buy.html">产品购买</a></li>
+      <li><a class="use" href="./story.html">金小草故事</a></li>
+      <li><a href="#">粉丝说</a></li>
+      <div class="logo"></div>
+    </ul>
+  </div>
+  <div class="banner">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./imgs/banner_about.jpg" alt=""></div>
+        <!-- <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-slide">Slide 10</div> -->
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });
+    </script>
+  </div>
+
+  <div class="meta">
+    <div class="content staticBlock">
+      <div class="add">
+        <div class="title"></span>联系方式</div>
+        <div class="message">
+          <div>地址：上海市联友路88弄虹桥观邸5号楼</div>
+          <div>电话：400-820-8381</div>
+          <div>邮箱：general@jinxiaocao.com</div>
+        </div>
+      </div>
+      <div class="cmp">
+        <div class="title">合作</div>
+        <div class="message">
+          <div>商务合作</div>
+          <div>加入我们</div>
+        </div>
+      </div>
+      <div class="foc">
+        <div class="title">关注我们</div>
+        <div class="message">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -111,7 +111,8 @@ function jsClean(cb) {
 
 function esWatch(cb) {
   // es发生变化，编译es，同时更新文档
-  gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, parallel(es, compileDoc));
+  gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, parallel(es));
+  // gulp.watch([dirname + '/es/**/*.js'], { events: 'all' }, parallel(es, compileDoc));
   gulp.watch([dirname + '/lib/ellaH5/*.js'], { events: 'all' }, ellaH5);
   cb();
 }
@@ -162,7 +163,7 @@ function compileDoc(cb) {
     .pipe(jsdoc(config, cb));
 }
 
-exports.default = series(cssClean, jsClean, scss, es, compileDoc, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
+exports.default = series(cssClean, jsClean, scss, es, ellaH5, scssWatch, esWatch, htmlWatch, connectWatch);
 
 exports.compile = series(cssClean, jsClean, scss, es, ellaH5);
 

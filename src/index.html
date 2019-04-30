@@ -3,180 +3,225 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>会员兑换</title>
   <link rel="stylesheet" href="./css/style.min.css">
-  <link rel="shortcut icon" href="data:image/jpeg;" type="image/x-icon">
-  <script src="../ipConfig.js"></script>
-  <script src="./lib/zepto.min.js"></script>
-  <script src="./lib/ellaH5.min.js"></script>
-  <style>
-    @-webkit-keyframes stretchdelay {
-
-      0%,
-      40%,
-      100% {
-        -webkit-transform: scaleY(0.4);
-      }
-
-      20% {
-        -webkit-transform: scaleY(1.0);
-      }
-    }
-
-    @keyframes stretchdelay {
-
-      0%,
-      40%,
-      100% {
-        transform: scaleY(0.4);
-        -webkit-transform: scaleY(0.4);
-      }
-
-      20% {
-        transform: scaleY(1.0);
-        -webkit-transform: scaleY(1.0);
-      }
-    }
-
-    .loading-box {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      background: #ffffff;
-      z-index: 999;
-    }
-
-    .loading-box>div {
-      background-color: #4dbcc8;
-      height: 60px;
-      width: 6px;
-      display: inline-block;
-      -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-      animation: stretchdelay 1.2s infinite ease-in-out;
-      margin-top: 60%;
-    }
-
-    .loading-box .rect2 {
-      -webkit-animation-delay: -1.1s;
-      animation-delay: -1.1s;
-    }
-
-    .loading-box .rect3 {
-      -webkit-animation-delay: -1.0s;
-      animation-delay: -1.0s;
-    }
-
-    .loading-box .rect4 {
-      -webkit-animation-delay: -0.9s;
-      animation-delay: -0.9s;
-    }
-
-    .loading-box .rect5 {
-      -webkit-animation-delay: -0.8s;
-      animation-delay: -0.8s;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <title>金小草官网</title>
 </head>
 
 <body>
-  <div id="Loading" class="loading-box">
-    <div class="rect1"></div>
-    <div class="rect2"></div>
-    <div class="rect3"></div>
-    <div class="rect4"></div>
-    <div class="rect5"></div>
+  <div class="navigator staticBlock">
+    <ul class="clearfloat">
+      <li><a class="use active" href="./index.html">首页</a></li>
+      <li><a class="use" href="./about.html">关于金小草</a></li>
+      <li><a class="use" href="./buy.html">产品购买</a></li>
+      <li><a class="use" href="./story.html">金小草故事</a></li>
+      <li><a href="#">粉丝说</a></li>
+      <div class="logo"></div>
+    </ul>
   </div>
-  <div class="main" id="main">
-    <!-- <div class="header">
-
-      <img src="./imgs/defualtPho.png" />
-      <div class="headTxt">
-        <p>我不是成大惊</p>
-        <p>剩余会员：<span>0天</span></p>
+  <div class="banner">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./imgs/banner.jpg" alt=""></div>
+        <!-- <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-slide">Slide 10</div> -->
       </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
-    <div class="members">
-      <p class="title">积分换会员</p>
-      <div class="membersMain">
-        <div class="memberItem">
-          <div class="countsInfo">
-            <p>3天咿啦会员</p>
-            <p>原价：<span>5元</span></p>
-          </div>
-          <div class="counts">50积分</div>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      });
+    </script>
+  </div>
+  <div class="picblock staticBlock clearfloat">
+    <div>
+      <div class="block block1">
+        <div class="title"><span class="ancle"></span>高歌狂放<span class="underline"></span></div>
+        <div class="des">
+          <span>欢聚唱K时，金小草可以立即</span>
+          <span>缓解咽喉嘶哑，欢唱不停。</span>
         </div>
-        <div class="memberItem">
-          <div class="countsInfo">
-            <p>3天咿啦会员</p>
-            <p>原价：<span>5元</span></p>
-          </div>
-          <div class="counts">50积分</div>
+      </div>
+      <div class="block block2">
+        <div class="title"><span class="ancle"></span>工作 Talk Talk<span class="underline"></span></div>
+        <div class="des">
+          <span>面对马上要开始的演讲，工作汇报，客户演示，</span>
+          <span>金小草可以瞬间缓解咽喉不适和压力，</span>
+          <span>让嗓子以完美的状态上阵。</span>
         </div>
       </div>
-
-    </div> -->
-    <div class="memberIntroduce">
-      <p>积分换会员说明</p>
-      <p>1. 积分兑换会员为普通会员；</p>
-      <p>2. 积分兑换的会员可以与当前会员期限累加；</p>
-      <p>3. 积分会员在一定时间内有兑换上限；</p>
-    </div>
-  </div>
-  <div class="shade"></div>
-  <div class="memberModal">
-    <div class="close">取消</div>
-    <p class="title">积分换会员</p>
-    <div class="memberCard" id="memberCard">
-      <p>咿啦会员卡</p>
-      <p>免费借阅全场任意会员</p>
-      <p>有效期：<span class="activeTime"></span>天</p>
-    </div>
-    <img src="imgs/pic_payment.png" class="payMethod" />
-    <div class="jifen">
-      <div class="jifenLeft">
-        <img src="./imgs/mine_icon_integral_1.png" />
-        <span>积分 </span>
-        <span style="color:#999">(剩余<span class="lastPoint"></span>积分) </span>
-      </div>
-      <div class="jifenRight">
-        <span><span class="points">2</span>积分</span>
-        <img src="./imgs/copy.png" />
+      <div class="block block3">
+        <div class="title"><span class="ancle"></span>吸烟过后<span class="underline"></span></div>
+        <div class="des">
+          <span>吸烟后引起的咽喉不适，</span>
+          <span>金小草可以迅速舒缓咽喉刺激，清新口气。</span>
+        </div>
       </div>
     </div>
-    <div class="save">立即支付</div>
+    <div>
+      <div class="block block4">
+        <div class="title"><span class="ancle"></span>助威呐喊<span class="underline"></span></div>
+        <div class="des">
+          <span>当助威呐喊失声时，</span>
+          <span>缓解用嗓过度，远离咽喉不适，让你放声呐喊</span>
+        </div>
+      </div>
+      <div class="block block5">
+        <div class="mainTitle"></div>
+        <div class="proButton"></div>
+      </div>
+      <div class="block block6">
+        <div class="title"><span class="ancle"></span>刺激饮食<span class="underline"></span></div>
+        <div class="des">
+          <span>吃完吃火锅等辛辣刺激食物后，</span>
+          <span>金小草能够迅速缓解辛辣给咽喉带来的刺激，</span>
+          <span>同时清新口气。</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="block block7">
+        <div class="title"><span class="ancle"></span>伴侣亲亲<span class="underline"></span></div>
+        <div class="des">
+          <span>与伴侣亲密时，</span>
+          <span>嚼口香糖不雅观，喉糖含化见效慢，</span>
+          <span>金小草可以让你的口气一秒变清新。</span>
+        </div>
+      </div>
+      <div class="block block8">
+        <div class="title"><span class="ancle"></span>户外旅游<span class="underline"></span></div>
+        <div class="des">
+          <span>金小草可以有效对抗空气变化带来的咽喉不适，</span>
+          <span>力助旅游及户外爱好者的旅程。</span>
+        </div>
+      </div>
+      <div class="block block9">
+        <div class="title"><span class="ancle"></span>气候变化<span class="underline"></span></div>
+        <div class="des">
+          <span>换季时节，空气质量下降所引起的咽喉敏感，</span>
+          <span>金小草同样可以随时带来温和的舒爽体验。</span>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="introduce staticBlock clearfloat">
+    <div class="title"></div>
+    <div class="introCard introCard1">
+      <div class="title"><span>创新</span>工艺，入口即化</div>
+      <div class="des">采用全球领先的全低温冷萃工艺,智能化干燥技术， 入口即化，无需配水，真正做到瞬间爽喉。</div>
+      <div class="button"></div>
+    </div>
+    <div class="introCard introCard2">
+      <div class="title"><span>传承</span>经典 升级配方</div>
+      <div class="des">源自 1800 年前张仲景《伤寒论》千年经典古方， 结合现代快节奏的生活方式和环境特点，升级 配方，多年潜心研制而成。</div>
+      <div class="button"></div>
+    </div>
+    <div class="introCard introCard3">
+      <div class="title"><span>道地</span>甄材 草本精华</div>
+      <div class="des">精粹14味纯天然草本，无香精、色素、防腐剂， 不含糖，更安全，食用无限量。</div>
+      <div class="button"></div>
+    </div>
+    <div class="introCard introCard4">
+      <div class="title"><span>品质</span>核心，专注生产</div>
+      <div class="des">全球顶级GMP生产工厂，实现全程PLC智能化控制， 通过国际食品安全管理FSSC-22000体系认证，生产 数据可溯源。</div>
+      <div class="button"></div>
+    </div>
   </div>
-  <div class="j-pop"></div>
-  <script>
-    // rem布局需要，非rem布局可以注释掉
-    function setRem() {
-      var dE = document.documentElement;
-      dE.style.fontSize = (dE.clientWidth * 100 / 750) + "px";
-      if (dE.clientHeight > dE.clientWidth) {
-        dE.style.fontSize = (dE.clientWidth * 100 / 750) + "px";
-      } else {
-        dE.style.fontSize = (dE.clientHeight * 100 / 750) + "px";
-      }
-      if (/(MI NOTE Pro)/i.test(navigator.userAgent)) {
-        dE.style.fontSize = (418 * 100 / 750) + "px";
-      }
-    }
-    setRem();
-    window.onload = function () {
-      setRem();
-      setInterval(setRem, 100);
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-      setRem();
-    }, false)
-  </script>
-
-  <script src="./js/main.min.js"></script>
+  <div class="history staticBlock">
+    <div class="title"></div>
+    <div class="swiper-container2">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="pic"></div>
+          <div class="title">卫冕之路不易|我们与上港一起砥砺前</div>
+        </div>
+      </div>
+    </div>
+    <div class="button"></div>
+    <script>
+      var swiper2 = new Swiper('.swiper-container2', {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      });
+    </script>
+  </div>
+  <div class="meta">
+    <div class="content staticBlock">
+      <div class="add">
+        <div class="title"></span>联系方式</div>
+        <div class="message">
+          <div>地址：上海市联友路88弄虹桥观邸5号楼</div>
+          <div>电话：400-820-8381</div>
+          <div>邮箱：general@jinxiaocao.com</div>
+        </div>
+      </div>
+      <div class="cmp">
+        <div class="title">合作</div>
+        <div class="message">
+          <div>商务合作</div>
+          <div>加入我们</div>
+        </div>
+      </div>
+      <div class="foc">
+        <div class="title">关注我们</div>
+        <div class="message">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
