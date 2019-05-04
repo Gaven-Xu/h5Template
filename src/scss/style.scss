@@ -111,10 +111,6 @@ a {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 
@@ -430,7 +426,6 @@ a {
     align-items: center;
     width: 300px;
     .pic {
-      background: image("hispic.jpg");
       background-size: 100%;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
@@ -440,10 +435,25 @@ a {
       position: absolute;
       top: 0;
     }
+    &:nth-child(1) .pic {
+      background: image("footer1.jpg");
+    }
+    &:nth-child(2) .pic {
+      background: image("footer2.jpg");
+    }
+    &:nth-child(3) .pic {
+      background: image("footer3.jpg");
+    }
+    &:nth-child(4) .pic {
+      background: image("footer4.jpg");
+    }
+    &:nth-child(5) .pic {
+      background: image("footer5.jpg");
+    }
     .title {
       position: absolute;
       top: 190px;
-      font: 14px/32px "微软雅黑";
+      font: 13px/32px "微软雅黑";
     }
   }
   & > .title {
@@ -684,6 +694,18 @@ a {
       font: 24px/40px "黑体";
       margin-top: 20px;
       text-align: left;
+    }
+    &:nth-child(1) .pic {
+      background: image("story1.jpg");
+    }
+    &:nth-child(2) .pic {
+      background: image("story2.jpg");
+    }
+    &:nth-child(3) .pic {
+      background: image("story3.jpg");
+    }
+    &:nth-child(4) .pic {
+      background: image("story4.jpg");
     }
   }
 }
